@@ -1,29 +1,34 @@
 // DEPENDENCIES
-const express	= require('express'),
-	PORT		= 8000,
-	bodyParser	= require('body-parser');
+const express = require('express'),
+	bodyParser = require('body-parser'),
+	PORT = 8000;
 // APP
 let app = express();
 
-// Require ROUTES
-let todolistRoutes = require('./routes/todolistRoutes');
+// ROUTES
+let tasksRoutes = require('./routes/tasksRoutes');
 
 // Require mongoose db
 let db = require('./config/db');
 
 // APP imports
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+	extended: true
+}));
 app.use(bodyParser.json());
 
 // Routes config
-app.use('/todolist', todolistRoutes);
+app.use('/tasks', tasksRoutes);
 
-// RUN APP
-app.listen(PORT, function(err, res) {
-	if(err) {
-		console.log('Surgio este error', err);
-		return;
-	}
-	console.log(`Server running localhost:${PORT}`);
+app.get('/', (req, res) => {
+	res.send('Welcome to my todoList project main Page');
 });
 
+// RUN APP
+app.listen(PORT, (err, res) => {
+	if (err) {
+		console.log(err);
+		return;
+	}
+	console.log(`Server running http://localhost:${PORT}`);
+});

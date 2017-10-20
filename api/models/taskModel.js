@@ -1,7 +1,8 @@
-const mongooose = require('mongoose');
-const Schema = mongooose.Schema;
+const mongooose = require('mongoose'),
+	Schema = mongooose.Schema,
+	collectionName = 'tasks';
 
-var taskSchema = new Schema({
+var TaskSchema = new Schema({
 	name: { type: String, default: 'sin nombrar' },
 	task: String,
 	date: { type: Date, default: Date.now },
@@ -9,6 +10,6 @@ var taskSchema = new Schema({
 	updated_at: { type: Date, default: Date.now }
 });
 
-let TaskModel = mongooose.model('Task', taskSchema);
+let TaskModel = mongooose.model(collectionName, TaskSchema);
 
 module.exports = TaskModel;
