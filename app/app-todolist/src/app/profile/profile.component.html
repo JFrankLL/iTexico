@@ -1,0 +1,21 @@
+<h2>Lista de perfiles ({{ profiles.length }})</h2>
+
+<div class="add-profile">
+  <h3>Agregar nuevo</h3>
+  <input type="text" placeholder="Nombre" [(ngModel)]="name">
+  <input type="text" placeholder="ImagenUrl" [(ngModel)]="img">
+  <button type="button" class="add" (click)="add()">Agregar</button>
+</div>
+
+<app-description [profile]="currentProfile"></app-description>
+
+<ul class="profile-list">
+  <li class="profile" *ngFor="let profile of profiles">
+    <img (click)="setCurrentProfile(profile)" [src]="profile.img" alt="">
+    <label> <strong>{{ profile.name }}</strong></label>
+    <input type="text" placeholder="nuevo nombre">
+    <button class="update" (click)="update()">Actualizar</button>
+    <button class="delete" (click)="remove(profile)">Borrar</button>
+  </li>
+</ul>
+
