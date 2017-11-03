@@ -1,3 +1,22 @@
-<p>
-  task works!
-</p>
+<div class="task" [ngClass]="{'confirmed': task.toggle===true}">
+  <div class="left">
+  	<div>{{ '_id: ' + task._id }}</div>
+	  <div>{{ 'nombre: ' + task.name }}</div>
+	  <div>{{ 'actividad: ' + task.task }}</div>
+		<div>{{ 'fecha: ' + task.date }}</div>
+		<div>{{ 'usuario id: ' + task.owner }}</div>
+  </div>
+	<div class="tools">
+		<div class="btn btn-delete" (click)="delete()">Remover</div>
+		<div class="btn btn-confirm" (click)="toggle()">{{ (!task.toggle) ? marcar : marcar }}</div>
+	</div>
+</div>
+
+<!--
+name: { type: String, default: 'sin nombrar' },
+	task: String,
+	date: { type: Date, default: Date.now },
+	created_at: { type: Date, default: Date.now },
+	updated_at: { type: Date, default: Date.now },
+	users: { type: Array }
+ -->

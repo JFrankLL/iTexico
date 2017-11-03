@@ -1,33 +1,45 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './profile/profile.component';
+import { TaskListComponent } from './task-list/task-list.component';
 import { TaskComponent } from './task/task.component';
-
-import { ConvertToSpacePipe } from './shared/convert-to-space.pipe';
 import { DescriptionComponent } from './shared/description/description.component';
 
-import { HttpClientModule } from '@angular/common/http';
-
 import { ProfileService } from './profile/profile.service';
+import { TaskListService } from './task-list/task-list.service';
+import { ServiceService } from './home/service.service';
+
+import { ConvertToSpacePipe } from './shared/convert-to-space.pipe';
+
+import { RouterModule, Routes } from '@angular/router';
+import { TaskControlsComponent } from './task-controls/task-controls.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProfileComponent,
+    TaskListComponent,
     TaskComponent,
+    DescriptionComponent,
     ConvertToSpacePipe,
-    DescriptionComponent
+    TaskControlsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([
+      { path: 'taskList', component: TaskListComponent },
+      { path: '', component: HomeComponent }
+    ])
   ],
-  providers: [ProfileService],
+  providers: [ProfileService, TaskListService, ServiceService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

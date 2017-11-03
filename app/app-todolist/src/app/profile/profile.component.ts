@@ -12,7 +12,7 @@ import { ProfileService } from './profile.service';
 export class ProfileComponent implements OnInit {
 
   private _url = 'https://jsonplaceholder.typicode.com/photos';
-  private _nPhotos = 100;
+  private _nPhotos = 50;
 
   photos: any[];
   error: any;

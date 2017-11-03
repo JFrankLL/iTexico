@@ -1,0 +1,24 @@
+<div class="wrapper">
+  <div class="col register">
+    <form action="" method="post">
+      <h2>Registro</h2>
+      <input name="name" type="text" placeholder="nombre" [(ngModel)]="newUser.name" autocomplete="off" required>
+      <input name="email" type="email" placeholder="email" [(ngModel)]="newUser.email" autocomplete="off" required>
+      <input name="password" type="password" placeholder="contraseña" [(ngModel)]="newUser.password" autocomplete="off" required>
+      <input name="password-rep" type="password" placeholder="repetir contraseña" [(ngModel)]="passRepeat" autocomplete="off" required>
+      <button type="submit" (click)="addUser(newUser)">Registrar</button>
+    </form>
+  </div>
+  <div class="col login">
+    <form action="" method="post">
+      <h2>LogIn</h2>
+      <input name="email-cred" type="email" placeholder="email" [(ngModel)]="credentials.email" autocomplete="off" required>
+      <input name="password-cred" type="password" placeholder="contraseña" [(ngModel)]="credentials.password" autocomplete="off" required>
+      <button type="submit" (click)="logInUser(credentials)">LogIn</button>
+    </form>
+  </div>
+</div>
+
+<div class="message">
+  <h1>{{ message }}</h1>
+</div>

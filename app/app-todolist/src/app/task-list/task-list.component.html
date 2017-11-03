@@ -1,0 +1,10 @@
+<div class="content">
+  <div class="col left">
+    <app-task-controls [message]="msg" [users]="users" (addTaskParent)="postTask($event)"></app-task-controls>
+  </div>
+  <div class="col right">
+    <div *ngFor="let task of tasks">
+      <app-task [task]="task" (deleteP)="deleteTask($event)" (toggleP)="toggle($event)"></app-task>
+    </div>
+  </div>
+</div>

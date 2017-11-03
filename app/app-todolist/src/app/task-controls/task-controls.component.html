@@ -1,0 +1,21 @@
+<div class="root">
+    <div class="form-wrapper">
+        <h2>Añadir una nueva tarea</h2>
+        <form action="" method="post">
+            <strong><label>Titulo de la Tarea</label></strong>
+            <input autocomplete="off" placeholder="nombre de la tarea" type="text" id="name" [(ngModel)]="newTask.name" name="name" required>
+            <strong><label>Descripcion de la tarea</label></strong>
+            <input autocomplete="off" placeholder="actividad de la tarea" type="text" id="task" [(ngModel)]="newTask.task" name="task" required>
+            <strong><label>Fecha limite</label></strong>
+            <input autocomplete="off" placeholder="fecha limite" type="date" value="new Date()" id="date" [(ngModel)]="newTask.date" name="date" required>
+            <strong><label>Usuario</label></strong>
+            <select name="owner" id="" [(ngModel)]="newTask.owner">
+                <option *ngFor="let user of users" [value]="user._id">{{ user.name }}</option>
+            </select>
+            <button type="submit" (click)="addTask(newTask)">Registrar</button>
+        </form>
+        <div class="message">
+            Mensajito: {{ message }}
+        </div>
+    </div>
+</div>
